@@ -36,3 +36,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+
+.popup-outer {
+  background-color: hsla(0, 0%, 34%, 0.774);
+}

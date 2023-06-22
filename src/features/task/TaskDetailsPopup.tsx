@@ -34,7 +34,7 @@ const TaskDetailsPopup = ({ task, onClose }: TaskDetailsPopupProps) => {
   }
 
   return (
-    <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center ">
+    <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center popup-outer ">
       <div className="popup backdrop-blur-md p-10 shadow-lg shadow-black max-w-lg min-w-sm">
         <button onClick={closePopup} className="absolute top-0 right-0">
           <IoClose className="text-3xl font-bold" />
