@@ -30,8 +30,8 @@ const Login = () => {
   }
 
   return (
-    <div>
-      <h1>Login</h1>
+    <div className="flex flex-col items-center justify-center h-screen space-y-3">
+      <h1 className="text-4xl font-bold font-serif">Login</h1>
       {status === "loading" && <p>Loading...</p>}
       {error && <p>{error}</p>}
       <input
@@ -39,17 +39,27 @@ const Login = () => {
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+        className="border border-gray-400 px-2 py-1 rounded-md text-slate-700"
       />
       <input
         type="password"
         placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+        className="border border-gray-400 px-2 py-1 rounded-md text-slate-700"
       />
 
-      <button onClick={handleLogin}>Login</button>
-      <p>
-        Don't have an account? <Link to="/register">Register</Link>
+      <button
+        onClick={handleLogin}
+        className="border border-slate-300 hover:border-orange-400 px-4 py-2 rounded-md"
+      >
+        Login
+      </button>
+      <p className="text-slate-400">
+        Don't have an account?{" "}
+        <Link to="/register" className="text-blue-500 hover:text-blue-600">
+          Register
+        </Link>
       </p>
     </div>
   )
