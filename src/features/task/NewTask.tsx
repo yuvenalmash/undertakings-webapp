@@ -37,8 +37,8 @@ const NewTask = () => {
   }, [status, navigate])
 
   return (
-    <div>
-      <h1>New Task</h1>
+    <div className="flex flex-col items-center justify-center h-screen space-y-3">
+      <h1 className="text-4xl font-bold font-serif">New Task</h1>
       {status === "loading" && <p>Loading...</p>}
       {error && <p>{error}</p>}
       <input
@@ -46,20 +46,28 @@ const NewTask = () => {
         placeholder="Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
+        className="border border-gray-400 px-2 py-1 rounded-md text-slate-700"
       />
       <input
         type="text"
         placeholder="Description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
+        className="border border-gray-400 px-2 py-1 rounded-md text-slate-700"
       />
       <input
         type="datetime-local"
         placeholder="Due date"
         value={dueDate ? dueDate.toString() : ""}
         onChange={(e) => setDueDate(e.target.value)}
+        className="border border-gray-400 px-2 py-1 rounded-md text-slate-700"
       />
-      <button onClick={handleCreateTask}>Add task</button>
+      <button
+        onClick={handleCreateTask}
+        className="border border-slate-300 hover:border-orange-400 px-4 py-2 rounded-md"
+      >
+        Add task
+      </button>
     </div>
   )
 }
