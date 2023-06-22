@@ -8,13 +8,15 @@ import NewTask from "./features/task/NewTask"
 function App() {
   return (
     <Router>
-      <Navigation />
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/" element={<Home />} />
-        <Route path="/newTask" element={<NewTask />} />
-      </Routes>
+      <main className="min-h-screen flex flex-col">
+        <Navigation />
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/newTask" element={<NewTask />} />
+        </Routes>
+      </main>
     </Router>
   )
 }
