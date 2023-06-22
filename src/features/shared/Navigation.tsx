@@ -1,14 +1,16 @@
 import { useSelector, useDispatch } from "react-redux"
 import { RootState } from "../../app/store"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { logout } from "../authentication/authenticationSlice"
 
 const Navigation = () => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const { user } = useSelector((state: RootState) => state.authentication)
 
   const handleLogout = () => {
     dispatch(logout())
+    navigate("/")
   }
 
   return (
@@ -20,10 +22,7 @@ const Navigation = () => {
         {user ? (
           <>
             <li>
-              <Link to="/tasks">Tasks</Link>
-            </li>
-            <li>
-              <Link to="/profile">Profile</Link>
+              <Link to="/newTask">New Task</Link>
             </li>
             <li>
               <button onClick={handleLogout}>Logout</button>

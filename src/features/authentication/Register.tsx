@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
 import { AppDispatch, RootState } from "../../app/store"
-import { registerAsync, RegisterCredentials } from "./authenticationSlice"
+import {
+  registerAsync,
+  RegisterCredentials,
+  setStatus,
+} from "./authenticationSlice"
 
 const Register = () => {
   const dispatch = useDispatch<AppDispatch>()
@@ -17,10 +21,13 @@ const Register = () => {
   const [passwordConfirmation, setPasswordConfirmation] = useState("")
 
   useEffect(() => {
+    console.log("Register: useEffect")
+    console.log("Register: status", status)
     if (status === "succeeded") {
+      dispatch(setStatus("idle"))
       navigate("/login")
     }
-  }, [status, navigate])
+  }, [status, navigate, dispatch])
 
   const handleSignup = () => {
     if (password !== passwordConfirmation) {

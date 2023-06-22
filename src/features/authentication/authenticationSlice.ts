@@ -60,6 +60,9 @@ export const authenticationSlice = createSlice({
       state.status = "idle"
       state.error = null
     },
+    setStatus: (state, action) => {
+      state.status = action.payload
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -91,6 +94,7 @@ export const authenticationSlice = createSlice({
 })
 
 export const { logout } = authenticationSlice.actions
+export const { setStatus } = authenticationSlice.actions
 
 export const selectToken = (state: RootState) => state.authentication.token
 export const selectUser = (state: RootState) => state.authentication.user
