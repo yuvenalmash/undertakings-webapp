@@ -8,13 +8,23 @@ import { createTaskAsync } from "./taskSlice"
 const NewTask = () => {
   const dispatch = useDispatch<AppDispatch>()
   const navigate = useNavigate()
-  const { status, error } = useSelector((state: RootState) => state.task)
+  let { status, error } = useSelector((state: RootState) => state.task)
 
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
   const [dueDate, setDueDate] = useState("")
 
   const handleCreateTask = () => {
+    const errorField = document.querySelector(
+      ".errorField",
+    ) as HTMLParagraphElement
+
+    if (!title || !description || !dueDate) {
+      errorField.innerText = "All fields are required"
+      errorField.classList.remove("hidden")
+      return
+    }
+
     const newTask = {
       title,
       description,
@@ -37,37 +47,43 @@ const NewTask = () => {
   }, [status, navigate])
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen space-y-3">
-      <h1 className="text-4xl font-bold font-serif">New Task</h1>
-      {status === "loading" && <p>Loading...</p>}
-      {error && <p>{error}</p>}
-      <input
-        type="text"
-        placeholder="Title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        className="border border-gray-400 px-2 py-1 rounded-md text-slate-700"
-      />
-      <input
-        type="text"
-        placeholder="Description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        className="border border-gray-400 px-2 py-1 rounded-md text-slate-700"
-      />
-      <input
-        type="datetime-local"
-        placeholder="Due date"
-        value={dueDate ? dueDate.toString() : ""}
-        onChange={(e) => setDueDate(e.target.value)}
-        className="border border-gray-400 px-2 py-1 rounded-md text-slate-700"
-      />
-      <button
-        onClick={handleCreateTask}
-        className="border border-slate-300 hover:border-orange-400 px-4 py-2 rounded-md"
-      >
-        Add task
-      </button>
+    <div className="flex flex-col items-center justify-center h-screen">
+      <div className="flex flex-col items-center justify-center space-y-3 bg-gray-800 border border-gray-400 px-4 py-2 rounded-md shadow-lg shadow-orange-400">
+        <h1 className="text-4xl font-bold font-serif">New Task</h1>
+        {status === "loading" && <p>Loading...</p>}
+        {error && <p>{error}</p>}
+        {status === "failed" && <p>Failed to create task</p>}
+        <br />
+        <input
+          type="text"
+          placeholder="Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          className="border border-gray-400 px-2 py-1 rounded-md text-slate-700"
+        />
+        <input
+          type="text"
+          placeholder="Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          className="border border-gray-400 px-2 py-1 rounded-md text-slate-700"
+        />
+        <input
+          type="datetime-local"
+          placeholder="Due date"
+          value={dueDate ? dueDate.toString() : ""}
+          onChange={(e) => setDueDate(e.target.value)}
+          className="border border-gray-400 px-2 py-1 rounded-md text-slate-700"
+        />
+        <br />
+        <p className="errorField hidden text-red-500 text-sm"></p>
+        <button
+          onClick={handleCreateTask}
+          className="border border-slate-300 hover:border-orange-400 px-4 py-2 rounded-md"
+        >
+          Add task
+        </button>
+      </div>
     </div>
   )
 }
