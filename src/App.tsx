@@ -8,7 +8,7 @@ import NewTask from "./features/task/NewTask"
 function App() {
   return (
     <Router>
-      <main className="min-h-screen flex flex-col">
+      <main className="h-screen flex flex-col">
         <Navigation />
         <Routes>
           <Route path="/login" element={<Login />} />

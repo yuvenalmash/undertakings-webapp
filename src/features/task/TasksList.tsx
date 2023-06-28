@@ -38,12 +38,12 @@ const TasksList = () => {
   }
 
   return (
-    <section className="max-w-7xl mx-auto flex flex-col items-center mt-6  bg-gray-800 rounded-md p-4 shadow-orange-400 shadow">
-      <h2 className="text-4xl font-bold font-serif">Tasks</h2>
+    <section className="max-w-7xl mx-auto flex flex-col items-center bg-gray-800 rounded-md p-4 shadow-orange-400 shadow h-5/6">
+      <h2 className="text-4xl font-bold font-serif h-12">Tasks</h2>
       {status === "loading" ? (
         <div className="text-2xl font-serif">Loading...</div>
       ) : (
-        <ul className="mt-4 flex flex-col space-y-4 justify-center">
+        <ul className="mt-4 flex flex-col space-y-4 overflow-auto flex-grow">
           {tasks && tasks.length > 0 ? (
             tasks.map((task) => (
               <TaskItem
