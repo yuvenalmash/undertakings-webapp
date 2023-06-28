@@ -32,7 +32,7 @@ const Navigation = () => {
   ]
 
   return (
-    <nav className="bg-gray-800">
+    <nav className="bg-gray-800 shadow-orange-400 shadow h-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
@@ -78,7 +78,7 @@ const Navigation = () => {
         </div>
       </div>
 
-      <div className="mobile-menu hidden md:hidden">
+      <div className="mobile-menu hidden md:hidden bg-gray-800">
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
           {user
             ? loggedInLinks.map((link) => (
