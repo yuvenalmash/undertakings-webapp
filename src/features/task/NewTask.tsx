@@ -48,7 +48,7 @@ const NewTask = () => {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
-      <div className="flex flex-col items-center justify-center space-y-3 bg-gray-800 border border-gray-400 px-4 py-2 rounded-md shadow-lg shadow-orange-400">
+      <div className="flex flex-col items-center justify-center space-y-3 bg-gray-800 px-6 py-4 rounded-md shadow shadow-orange-400">
         <h1 className="text-4xl font-bold font-serif">New Task</h1>
         {status === "loading" && <p>Loading...</p>}
         {error && <p>{error}</p>}

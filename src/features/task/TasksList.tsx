@@ -38,7 +38,7 @@ const TasksList = () => {
   }
 
   return (
-    <section className="max-w-7xl mx-auto flex flex-col items-center mt-6  bg-gray-800 rounded-md p-4">
+    <section className="max-w-7xl mx-auto flex flex-col items-center mt-6  bg-gray-800 rounded-md p-4 shadow-orange-400 shadow">
       <h2 className="text-4xl font-bold font-serif">Tasks</h2>
       {status === "loading" ? (
         <div className="text-2xl font-serif">Loading...</div>
