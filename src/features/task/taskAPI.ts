@@ -1,5 +1,5 @@
 import { Task } from "./taskSlice"
-const API_URL = "http://localhost:3000/api/v1"
+const API_URL = "https://undertakings-5fbcc97dce19.herokuapp.com/api/v1"
 
 export const fetchUserTasks = async (token: string, userId: number) => {
   const response = await fetch(`${API_URL}/users/${userId}/tasks`, {
