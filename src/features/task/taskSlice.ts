@@ -50,7 +50,7 @@ export interface Task {
 
 export const createTaskAsync = createAsyncThunk(
   "task/createTask",
-  async (newTask: Task, { getState }) => {
+  async (newTask: NewTask, { getState }) => {
     const token = (getState() as RootState).authentication.token || ""
     const userId = (getState() as RootState).authentication.user?.id || 0
     const response = await createTask(token, userId, newTask)
