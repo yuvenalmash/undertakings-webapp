@@ -12,10 +12,15 @@ const TaskItem = ({
   handleTaskClick: (task: Task) => void
 }) => {
   const dispatch = useDispatch<AppDispatch>()
-  const { id, title, completed } = task
+  const { id, title, description, completed, due_date } = task
 
   const handleCompletedChange = () => {
-    const updatedTask = { ...task, completed: !completed }
+    const updatedTask = {
+      title,
+      due_date,
+      description,
+      completed: !completed,
+    }
     dispatch(updateTaskAsync(updatedTask))
   }
 
@@ -28,10 +33,7 @@ const TaskItem = ({
   }
 
   return (
-    <li
-      className="flex justify-between space-x-4 text-xl backdrop-blur-md border border-orange-400 px-4 py-2 rounded-md"
-      onClick={handleClick}
-    >
+    <li className="flex justify-between space-x-4 text-xl backdrop-blur-md border border-orange-400 px-4 py-2 rounded-md">
       <div className="flex items-center space-x-3 max-w-full">
         <input
           type="checkbox"
@@ -43,6 +45,7 @@ const TaskItem = ({
           className={`${
             completed ? "line-through opacity-50" : ""
           }overflow-ellipsis overflow-hidden w-52 sm:w-72 md:w-96`}
+          onClick={handleClick}
         >
           {title}
         </span>

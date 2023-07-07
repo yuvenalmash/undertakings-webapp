@@ -39,18 +39,9 @@ export const fetchUserTasksAsync = createAsyncThunk(
   },
 )
 
-export interface Task {
-  id: number
-  title: string
-  description: string
-  due_date: string
-  completed: boolean
-  user_id: number
-}
-
 export const createTaskAsync = createAsyncThunk(
   "task/createTask",
-  async (newTask: Task, { getState }) => {
+  async (newTask: NewTask, { getState }) => {
     const token = (getState() as RootState).authentication.token || ""
     const userId = (getState() as RootState).authentication.user?.id || 0
     const response = await createTask(token, userId, newTask)
@@ -60,10 +51,14 @@ export const createTaskAsync = createAsyncThunk(
 
 export const updateTaskAsync = createAsyncThunk(
   "task/updateTask",
-  async (task: Task, { getState }) => {
+  async (updatedTask: NewTask, { getState }) => {
     const token = (getState() as RootState).authentication.token || ""
     const userId = (getState() as RootState).authentication.user?.id || 0
-    const response = await updateTask(token, userId, task)
+    const taskId: number =
+      (getState() as RootState).task.tasks.find(
+        (task) => task.title === updatedTask.title,
+      )?.id || 0
+    const response = await updateTask(token, userId, taskId, updatedTask)
     return response
   },
 )

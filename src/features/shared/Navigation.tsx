@@ -1,17 +1,28 @@
+import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { RootState } from "../../app/store"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate, useLocation } from "react-router-dom"
 import { logout } from "../authentication/authenticationSlice"
 import { IoMenuOutline } from "react-icons/io5"
 
 const Navigation = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const location = useLocation()
   const { user } = useSelector((state: RootState) => state.authentication)
+
+  useEffect(() => {
+    if (
+      !user &&
+      location.pathname !== "/login" &&
+      location.pathname !== "/register"
+    ) {
+      navigate("/")
+    }
+  }, [user, navigate, location.pathname])
 
   const handleLogout = () => {
     dispatch(logout())
-    navigate("/")
   }
 
   const handleMobileMenu = () => {
