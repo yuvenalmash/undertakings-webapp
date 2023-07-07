@@ -14,17 +14,29 @@ const NewTask = () => {
   const [description, setDescription] = useState("")
   const [dueDate, setDueDate] = useState("")
 
-  const handleCreateTask = () => {
-    const newTask = {
-      title,
-      description,
-      completed: false,
-      due_date: dueDate,
-      user_id: 0,
-      id: 0,
+  const inputValidation = () => {
+    if (title === "") {
+      alert("Title is required")
+      return false
     }
+    if (dueDate === "") {
+      alert("Due date is required")
+      return false
+    }
+    return true
+  }
 
-    dispatch(createTaskAsync(newTask))
+  const handleCreateTask = () => {
+    if (inputValidation()) {
+      const newTask = {
+        title,
+        description,
+        completed: false,
+        due_date: dueDate,
+      }
+
+      dispatch(createTaskAsync(newTask))
+    }
   }
 
   useEffect(() => {
