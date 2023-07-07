@@ -1,4 +1,4 @@
-import { NewTask, Task } from "./taskSlice"
+import { NewTask } from "./taskSlice"
 
 const API_URL = "https://undertakings-5fbcc97dce19.herokuapp.com/api/v1"
 // const API_URL = "http://localhost:3000/api/v1"
@@ -38,8 +38,13 @@ export const createTask = async (
   }
 }
 
-export const updateTask = async (token: string, userId: number, task: Task) => {
-  const response = await fetch(`${API_URL}/users/${userId}/tasks/${task.id}`, {
+export const updateTask = async (
+  token: string,
+  userId: number,
+  taskId: number,
+  task: NewTask,
+) => {
+  const response = await fetch(`${API_URL}/users/${userId}/tasks/${taskId}`, {
     method: "PATCH",
     headers: {
       Authorization: `Bearer ${token}`,
