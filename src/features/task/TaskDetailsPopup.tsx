@@ -13,15 +13,15 @@ const TaskDetailsPopup = ({ task, onClose }: TaskDetailsPopupProps) => {
   const dispatch = useDispatch<AppDispatch>()
   const { id, title, description, due_date, completed } = task
 
-  const [completedState, setCompleted] = useState(completed)
+  const [completedState, setCompleted] = useState(!completed)
 
   const dateOnly = due_date.split("T")[0]
   const timeOnly = due_date.split("T")[1].split(".")[0]
 
   const handleCompletedChange = () => {
-    const updatedTask = { ...task, completed: !completed }
-    dispatch(updateTaskAsync(updatedTask))
+    const updatedTask = { ...task, completed: completedState }
     setCompleted(!completedState)
+    dispatch(updateTaskAsync(updatedTask))
   }
 
   const handleDelete = () => {
@@ -49,7 +49,7 @@ const TaskDetailsPopup = ({ task, onClose }: TaskDetailsPopupProps) => {
             <div>
               <input
                 type="checkbox"
-                checked={completedState}
+                checked={!completedState}
                 onChange={handleCompletedChange}
                 className="form-checkbox h-5 w-5 text-orange-500"
               />{" "}
