@@ -112,10 +112,9 @@ export const taskSlice = createSlice({
       })
       .addCase(updateTaskAsync.fulfilled, (state, action) => {
         state.status = "succeeded"
-        const index = state.tasks.findIndex(
-          (task) => task.id === action.payload.task.id,
+        state.tasks = state.tasks.map((task) =>
+          task.id === action.payload.task.id ? action.payload.task : task,
         )
-        state.tasks[index] = action.payload.task
       })
       .addCase(updateTaskAsync.rejected, (state, action) => {
         state.status = "failed"
@@ -127,10 +126,9 @@ export const taskSlice = createSlice({
       })
       .addCase(deleteTaskAsync.fulfilled, (state, action) => {
         state.status = "succeeded"
-        const index = state.tasks.findIndex(
-          (task) => task.id === action.payload.task_id,
+        state.tasks = state.tasks.filter(
+          (task) => task.id !== action.payload.task_id,
         )
-        state.tasks.splice(index, 1)
       })
       .addCase(deleteTaskAsync.rejected, (state, action) => {
         state.status = "failed"

@@ -6,6 +6,7 @@ import {
   selectTaskStatus,
   selectTasks,
   Task,
+  deleteTaskAsync,
 } from "./taskSlice"
 import { selectUser } from "../authentication/authenticationSlice"
 import TaskItem from "./TaskItem"
@@ -31,6 +32,10 @@ const TasksList = () => {
     setSelectedTask(task)
   }
 
+  const handleDelete = (taskId: number) => {
+    dispatch(deleteTaskAsync(taskId))
+  }
+
   const handleClosePopup = (closedTask: Task) => {
     if (selectedTask && closedTask.id === selectedTask.id) {
       setSelectedTask(null)
@@ -38,10 +43,12 @@ const TasksList = () => {
   }
 
   return (
-    <section className="max-w-7xl mx-auto flex flex-col items-center mt-6  bg-gray-800 rounded-md p-4">
+    <section className="mx-auto flex flex-col items-center mt-6  bg-gray-800 rounded-md p-4">
       <h2 className="text-4xl font-bold font-serif">Tasks</h2>
       {status === "loading" ? (
-        <div className="text-2xl font-serif">Loading...</div>
+        <div className="text-2xl font-serif w-52 sm:w-72 md:w-96">
+          Loading...
+        </div>
       ) : (
         <ul className="mt-4 flex flex-col space-y-4 justify-center">
           {tasks && tasks.length > 0 ? (
@@ -50,10 +57,13 @@ const TasksList = () => {
                 key={task.id}
                 task={task}
                 handleTaskClick={handleTaskClick}
+                handleDelete={handleDelete}
               />
             ))
           ) : (
-            <div className="text-2xl font-serif">No tasks found</div>
+            <div className="text-2xl font-serif w-52 sm:w-72 md:w-96">
+              No tasks found
+            </div>
           )}
         </ul>
       )}
