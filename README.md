@@ -14,6 +14,7 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
+  - [🚀 Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -30,9 +31,9 @@
 # 📖 Undertakings (Frontend) <a name="about-project"></a>
 
 
-**Undertakings(frontend)** is a web application that allows users to create and manage tasks. It is built with React.js and Redux.
+**Undertakings(frontend)** is a web application that allows users to create and manage tasks. It is built with React.js and Redux using vite.js as the build tool.
 
-**[Undertakings(backend)](https://github.com/yuvenalmash/undertakings)**
+***Backend Repository:*** [Undertakings API](https://github.com/yuvenalmash/undertakings)
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -64,6 +65,12 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## 🚀 Live Demo <a name="live-demo"></a>
+
+[Live Demo Link](https://undertakings-webapp.vercel.app/)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 <!-- GETTING STARTED -->
 
 ## 💻 Getting Started <a name="getting-started"></a>
@@ -74,7 +81,6 @@ To get a local copy up and running, follow these steps.
 
 In order to run this project you need:
 
-- **[Node.js](https://nodejs.org/en/)**
 - **[npm](https://www.npmjs.com/)**
 
 
