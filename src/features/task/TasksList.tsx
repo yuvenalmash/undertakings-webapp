@@ -43,14 +43,14 @@ const TasksList = () => {
   }
 
   return (
-    <section className="mx-auto flex flex-col items-center mt-6  bg-gray-800 rounded-md p-4">
-      <h2 className="text-4xl font-bold font-serif">Tasks</h2>
+    <div className="mx-auto w-fit flex flex-col items-center my-6  bg-gray-800 rounded-md p-4 h-full">
+      <h2 className="text-4xl font-bold font-serif h-fit">Tasks</h2>
       {status === "loading" ? (
         <div className="text-2xl font-serif w-52 sm:w-72 md:w-96">
           Loading...
         </div>
       ) : (
-        <ul className="mt-4 flex flex-col space-y-4 justify-center">
+        <ul className="flex flex-col space-y-4 mt-4 overflow-auto">
           {tasks && tasks.length > 0 ? (
             tasks.map((task) => (
               <TaskItem
@@ -70,7 +70,7 @@ const TasksList = () => {
       {selectedTask && (
         <TaskDetailsPopup task={selectedTask} onClose={handleClosePopup} />
       )}
-    </section>
+    </div>
   )
 }
 

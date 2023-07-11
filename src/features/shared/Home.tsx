@@ -7,11 +7,11 @@ const Home = () => {
   const { user } = useSelector((state: RootState) => state.authentication)
 
   return (
-    <div className="max-w-7xl mx-auto px-2">
+    <div className="max-w-7xl mx-auto px-2 h-5/6">
       {user ? (
         <TasksList />
       ) : (
-        <div className="flex flex-col items-center justify-center h-screen">
+        <div className="flex flex-col items-center justify-center h-full">
           <h1 className="text-4xl font-bold font-serif text-center">
             Welcome to Undertakings
           </h1>

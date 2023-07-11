@@ -30,7 +30,7 @@ const Login = () => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen space-y-3">
+    <div className="flex flex-col items-center justify-center h-full space-y-3">
       <h1 className="text-4xl font-bold font-serif">Login</h1>
       {status === "loading" && <p>Loading...</p>}
       {error && <p>{error}</p>}
