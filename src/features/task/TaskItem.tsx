@@ -1,15 +1,17 @@
 // Task component
 import { useDispatch } from "react-redux"
-import { deleteTaskAsync, updateTaskAsync, Task } from "./taskSlice"
+import { updateTaskAsync, Task } from "./taskSlice"
 import { AppDispatch } from "../../app/store"
 import { IoTrashOutline } from "react-icons/io5"
 
 const TaskItem = ({
   task,
   handleTaskClick,
+  handleDelete,
 }: {
   task: Task
   handleTaskClick: (task: Task) => void
+  handleDelete: (taskId: number) => void
 }) => {
   const dispatch = useDispatch<AppDispatch>()
   const { id, title, description, completed, due_date } = task
@@ -24,8 +26,8 @@ const TaskItem = ({
     dispatch(updateTaskAsync(updatedTask))
   }
 
-  const handleDelete = () => {
-    dispatch(deleteTaskAsync(id))
+  const handleItemDelete = () => {
+    handleDelete(id)
   }
 
   const handleClick = () => {
@@ -44,13 +46,13 @@ const TaskItem = ({
         <span
           className={`${
             completed ? "line-through opacity-50" : ""
-          }overflow-ellipsis overflow-hidden w-52 sm:w-72 md:w-96`}
+          }overflow-ellipsis overflow-hidden cursor-pointer w-52 sm:w-72 md:w-96`}
           onClick={handleClick}
         >
           {title}
         </span>
       </div>
-      <button onClick={handleDelete}>
+      <button onClick={handleItemDelete}>
         <IoTrashOutline className="text-red-500 text-2xl" />
       </button>
     </li>
